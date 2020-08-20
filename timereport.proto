@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+message ReportRequest {
+    string message = 1;
+    string tag = 2;
+    string username = 3;
+}
+
+message ReportResponse {
+    int64 timestamp = 1;
+    string message = 2;
+    string tag = 3;
+    string username = 4;
+}
+
+message ReportFilter {
+    string tag = 1;
+    string username = 2;
+}
+
+message ReportListResponse {
+    repeated ReportResponse listOfDetails = 1;
+}
+
+service TimereportService {
+    rpc Report(ReportRequest) returns (ReportResponse);
+    rpc Get(ReportFilter) returns (ReportListResponse);
+}
