@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+
+
+service ReportRepository {
+    rpc SaveReport(ReportEntity) returns (ReportEntity);
+    
+}
+
+message ReportEntity {
+    int64 timestamp = 1;
+    string message = 2;
+    string tag = 3;
+    string username = 4;
+}
