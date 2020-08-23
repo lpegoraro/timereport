@@ -22,7 +22,13 @@ message ReportListResponse {
     repeated ReportResponse listOfDetails = 1;
 }
 
-service TimereportService {
+service ReportService {
     rpc Report(ReportRequest) returns (ReportResponse);
     rpc Get(ReportFilter) returns (ReportListResponse);
+}
+
+service ReportController {
+    rpc GetPosts(response http.ResponseWriter, request *http.Request);
+	rpc AddPost(response http.ResponseWriter, request *http.Request);
+
 }
