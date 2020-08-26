@@ -1,10 +1,13 @@
 syntax = "proto3";
 
-package report;
+package timereport.reportapi;
+
+option go_package="reportapi";
 
 import "google/protobuf/empty.proto";
 import "google/api/annotations.proto";
 import "protoc-gen-swagger/options/annotations.proto";
+import "google/protobuf/timestamp.proto";
 
 
 option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
@@ -15,6 +18,7 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
       url: "https://github.com/lpegoraro/timereport";
       description: "Timereport API using golang, mux, proto, swagger";
     }
+    schemes: HTTP
     schemes: HTTPS;
   };
 
@@ -28,7 +32,6 @@ service ReportService {
     rpc GetReports(ReportFilter) returns (stream ReportResponse) {
         option (google.api.http) = {
             get: "/api/v1/report"
-            body: "*"
         };
     }
 }
@@ -37,6 +40,7 @@ message ReportRequest {
     string message = 1;
     string tag = 2;
     string username = 3;
+    google.protobuf.Timestamp create_time = 4;
 }
 
 message ReportResponse {
