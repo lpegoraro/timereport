@@ -1,10 +1,9 @@
 syntax = "proto3";
 
-
+package report;
 
 service ReportRepository {
     rpc SaveReport(ReportEntity) returns (ReportEntity);
-    
 }
 
 message ReportEntity {

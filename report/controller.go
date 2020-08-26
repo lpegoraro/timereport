@@ -26,5 +26,4 @@ func (*controller) GetReport(response http.ResponseWriter, request *http.Request
 		response.WriteHeader(http.StatusBadRequest)
 		json..NewEncoder(response).Encode(errors.ServiceError{Message: "Request body format invalid"})
 	}
-
 }
