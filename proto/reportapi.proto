@@ -1,8 +1,6 @@
 syntax = "proto3";
 
-package timereport.reportapi;
-
-option go_package="reportapi";
+package reportapi;
 
 import "google/protobuf/empty.proto";
 import "google/api/annotations.proto";
