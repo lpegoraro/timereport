@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package timereport.storage;
 
-import "timereport/api/reportapi.proto";
+import "proto/api/reportapi.proto";
 
 service ReportRepository {
     rpc SaveReport(ReportEntity) returns (ReportEntity);
-    rpc FetchReports(ReportFilter) returns (stream ReportEntity);
+    rpc FetchReports(timereport.api.ReportFilter) returns (stream ReportEntity);
 }
 
 message ReportEntity {
